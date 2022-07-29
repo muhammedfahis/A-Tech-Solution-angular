@@ -1,0 +1,9 @@
+.text-danger-addcontact {
+  background-color: rgb(238, 101, 101);
+  padding: 3px;
+  color: white !important;
+  margin-bottom: 10px !important;
+  z-index: 999999 !important;
+  margin: top 10px !important;
+  font-size: 75% !important;
+}

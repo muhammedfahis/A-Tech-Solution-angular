@@ -1,0 +1,73 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Add Vegitable</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="vegitableForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <input type="text" formControlName="name" class="form-control" id="vegitableName" placeholder="Enter Name">
+          <span *ngIf="submitted">
+            <small class="text-danger-addcontact" *ngIf="vegitableForm.get('name').hasError('required')">
+              Name is required.
+            </small>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Price</label>
+          <input type="number" formControlName="price" class="form-control" id="vegitablePrice"
+            placeholder="Enter Price">
+          <span *ngIf="submitted">
+            <small class="text-danger-addcontact" *ngIf="vegitableForm.get('price').hasError('required')">
+              Price is required.
+            </small>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Quantity</label>
+          <input type="number" formControlName="quantity" class="form-control" id="vegitableQuantity"
+            placeholder="Enter Quantity">
+          <span *ngIf="submitted">
+            <small class="text-danger-addcontact" *ngIf="vegitableForm.get('quantity').hasError('required')">
+              Quantity is required.
+            </small>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Color</label>
+          <input type="color" formControlName="color" class="form-control" id="vegitableColor">
+          <span *ngIf="submitted">
+            <small class="text-danger-addcontact" *ngIf="vegitableForm.get('color').hasError('required')">
+              Color is required.
+            </small>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="">Vitamis</label>
+          <select class="select form-control" multiple formControlName="vitamins">
+            <option value="vitamin one">vitamin one</option>
+            <option value="vitamin two">vitamin two</option>
+            <option value="vitamin three">vitamin three</option>
+          </select>
+          <span *ngIf="submitted">
+            <small class="text-danger-addcontact" *ngIf="vegitableForm.get('vitamins').hasError('required')">
+              Vitamins is required.
+            </small>
+          </span>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" id="modal-close" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+</div>

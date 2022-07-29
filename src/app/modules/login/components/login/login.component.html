@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="row">
+    <div class="col-sm-12 form-alignment" *ngIf="login">
+      <h1>Login</h1>
+    </div>
+    <div class="col-sm-12 form-alignment" *ngIf="register">
+      <h1>Register</h1>
+    </div>
+  </div>
+  <div class="col-sm-12 form-alignment">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <app-username (emailEvent)="onChangeEmail($event)"></app-username>
+      <span *ngIf="submitted">
+        <small class="text-danger-addcontact" *ngIf="loginForm.get('email').hasError('required')">
+          Email is required.
+        </small>
+        <small class="text-danger-addcontact" *ngIf="loginForm.get('email').hasError('email')">
+          Invalid email.
+        </small>
+      </span>
+      <app-password (passwordEvent)="onChangePassword($event)" formControlName="password"></app-password>
+      <span *ngIf="submitted">
+        <small class="text-danger-addcontact" *ngIf="loginForm.get('password').hasError('required')">
+          Password is required.
+        </small>
+        <small class="text-danger-addcontact" *ngIf="loginForm.get('password').hasError('pattern')">
+          Password must include minimum one capital letter,number and one special character.
+        </small>
+      </span>
+      <div class="row">
+        <div class="col-sm-12">
+          <a *ngIf="login && !register" (click)="onClickRegister()">register</a>
+          <a *ngIf="!login && register" (click)="lonClickLogin()">login</a>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 1%;">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="message-success" *ngIf="success">
+            {{message}}
+          </div>
+          <div class="message-error" *ngIf="!success">
+            {{message}}
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
