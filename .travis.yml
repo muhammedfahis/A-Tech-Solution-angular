@@ -1,0 +1,20 @@
+sudo: required
+services:
+    - docker
+before_install:
+    - docker build -t docker-vegitable -f Dockerfile.dev .
+script:
+    - docker run -e CI=true docker-vegitable ng test
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESS_KEY_ID
+  secret_access_key:
+    secure: "$SECRET_ACCESS_KEY"
+  region: "ap-south-1"
+  app: "docker-vegitable"
+  env: "Dockervegitable-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-015734153161"
+  bucket_path: "docker-vegitable"
+  on:
+    branch: vegitables
