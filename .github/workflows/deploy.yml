@@ -19,7 +19,7 @@ jobs:
           node-version: ${{matrix.node-version}}
       - name: build site
         run: |
-          docker build -t vegitalbes-docker .
+          docker build -t vegitalbes-docker-frontend .
         env: 
           CI: true
 
@@ -38,7 +38,7 @@ jobs:
             KEY: ${{secrets.KEY}}     
             script: |
                 whoami
-                cd  ./cicd-test
+                cd  ./A-Tech-Solution-angular
                 git pull origin vegitables
                 sudo docker stop $(docker ps -a -q)
                 sudo docker rm $(docker ps -a -q)
